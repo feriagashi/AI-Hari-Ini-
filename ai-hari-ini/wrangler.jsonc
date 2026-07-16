@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ai-hari-ini",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/artikel/*", "/kategori/*", "/rss.xml", "/sitemap.xml", "/robots.txt"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "ai-hari-ini-db",
+      "database_id": "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+    }
+  ],
+  "triggers": {
+    "crons": ["7 * * * *"]
+  },
+  "vars": {
+    "SITE_NAME": "AI Hari Ini",
+    "SITE_URL": "https://ai-hari-ini.YOUR-SUBDOMAIN.workers.dev",
+    "AUTO_PUBLISH_MIN_SCORE": "60",
+    "MAX_POSTS_PER_RUN": "8"
+  }
+}
